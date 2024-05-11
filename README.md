@@ -1,4 +1,4 @@
-Khristin Schenk
+Khristin Schenk<br>
 May 11th, 2024
 SDEV-140
 
@@ -17,98 +17,187 @@ SDEV-140
 
 - [Download the source code zip file](https://github.com/kschenk10-ivy-tech/SDEV-140-M08-Final-Project-Submission-Spring-2024/archive/refs/heads/main.zip)
 
-### Code: Version 1.0
 
 ```python
 # Version 1.0
-# Last updated on May 10th, 2024 by K.S. 
+# Program: `tkintergotchi.py`
+
+"""
+# Last updated on May 10th, 2024 by K.S.
+This Python script is a simple implementation of a tkintergotchi-like game using the `tkinter` library for GUI development.
+"""
 import tkinter as tk
-import random
+from tkinter import simpledialog, messagebox, ttk
 
-class Tamagotchi:
-    def __init__(self):
-        self.hunger = 5
-        self.happiness = 5
-        self.health = 5
-        self.discipline_level = 5
-        self.is_sick = False
-        self.needs_toilet = False
-        self.age = 0
-        self.stage = "Egg"
-
-    def grow(self):
-        self.age += 1
-        if self.age == 5:
-            self.stage = "Child"
-        elif self.age == 10:
-            self.stage = "Adult"
+class Pet:
+    def __init__(self, name, hunger, happiness, cleanliness, health):
+        self.name = name
+        self.hunger = hunger
+        self.happiness = happiness
+        self.cleanliness = cleanliness
+        self.health = health
 
     def feed(self):
-        if self.hunger > 0:
-            self.hunger -= 1
+        self.hunger = max(0, self.hunger - 10)
 
     def play(self):
-        if self.happiness < 10:
-            self.happiness += 1
+        self.happiness = min(100, self.happiness + 10)
 
-    def give_medicine(self):
-        if self.is_sick:
-            self.is_sick = False
-            self.health += 1
+    def clean(self):
+        self.cleanliness = min(100, self.cleanliness + 10)
 
-    def flush(self):
-        if self.needs_toilet:
-            self.needs_toilet = False
+    def doctor(self):
+        self.health = min(100, self.health + 10)
 
-    def check_health(self):
-        return f"Health: {self.health}, Hunger: {self.hunger}, Happiness: {self.happiness}, Discipline: {self.discipline_level}"
+    def time_pass(self):
+        self.hunger += 5
+        self.happiness -= 5
+        self.cleanliness -= 5
+        self.health -= 5 if self.hunger > 50 or self.cleanliness < 50 else 0
 
-    def discipline(self):
-        if self.discipline_level < 10:
-            self.discipline_level += 1
+    def is_alive(self):
+        return self.health > 0
 
-    def random_events(self):
-        if random.randint(1, 5) == 1:
-            self.is_sick = True
-        if random.randint(1, 5) == 1:
-            self.needs_toilet = True
+class Monster(Pet):
+    def __init__(self, name):
+        super().__init__(name, 50, 50, 50, 50)
 
-# Initialize the Tamagotchi instance
-tamagotchi = Tamagotchi()
+class BlackCat(Pet):
+    def __init__(self, name):
+        super().__init__(name, 30, 70, 70, 60)
 
-def update_gui():
-    hunger_label.config(text=f"Hunger: {tamagotchi.hunger}")
-    happiness_label.config(text=f"Happiness: {tamagotchi.happiness}")
-    health_label.config(text=f"Health: {tamagotchi.health}")
-    discipline_label.config(text=f"Discipline: {tamagotchi.discipline_level}")
-    stage_label.config(text=f"Stage: {tamagotchi.stage}")
+class IceBat(Pet):
+    def __init__(self, name):
+        super().__init__(name, 40, 60, 40, 80)
 
-def feed_tamagotchi():
-    tamagotchi.feed()
-    update_gui()
+class tkintergotchiGame:
+    def __init__(self, master):
+        self.master = master
+        self.master.title("tkintergotchi Virtual Pet Game")
+        self.pet = None
+        self.init_pet_selection()
 
-root = tk.Tk()
-root.title("Tamagotchi Simulator")
+    def init_pet_selection(self):
+        self.frame = ttk.Frame(self.master)
+        self.frame.pack(padx=10, pady=10)
 
-stage_label = tk.Label(root, text=f"Stage: {tamagotchi.stage}")
-stage_label.pack()
+        tk.Label(self.frame, text="Enter your pet's name:").pack()
+        self.name_entry = ttk.Entry(self.frame)
+        self.name_entry.pack()
 
-hunger_label = tk.Label(root, text=f"Hunger: {tamagotchi.hunger}")
-hunger_label.pack()
+        tk.Label(self.frame, text="Choose your pet type:").pack()
+        self.pet_type = tk.StringVar()
+        self.pet_type.set("Monster")  # default value
+        pet_options = ["Monster", "BlackCat", "IceBat"]
+        for option in pet_options:
+            ttk.Radiobutton(self.frame, text=option, value=option, variable=self.pet_type).pack()
 
-happiness_label = tk.Label(root, text=f"Happiness: {tamagotchi.happiness}")
-happiness_label.pack()
+        ttk.Button(self.frame, text="Start Game", command=self.start_game).pack()
 
-health_label = tk.Label(root, text=f"Health: {tamagotchi.health}")
-health_label.pack()
+    def start_game(self):
+        pet_name = self.name_entry.get()
+        pet_type = self.pet_type.get()
+        if pet_type == "Monster":
+            self.pet = Monster(pet_name)
+        elif pet_type == "BlackCat":
+            self.pet = BlackCat(pet_name)
+        elif pet_type == "IceBat":
+            self.pet = IceBat(pet_name)
+        else:
+            messagebox.showerror("Error", "Invalid pet type selected!")
+            return
 
-discipline_label = tk.Label(root, text=f"Discipline: {tamagotchi.discipline_level}")
-discipline_label.pack()
+        self.frame.destroy()  # Remove the selection frame
+        self.setup_game_interface()
 
-feed_button = tk.Button(root, text="Feed", command=feed_tamagotchi)
-feed_button.pack()
+    def setup_game_interface(self):
+        self.status_label = tk.Label(self.master, text="")
+        self.status_label.pack()
 
-root.mainloop()
+        ttk.Button(self.master, text="Feed", command=lambda: self.interact_with_pet('feed')).pack()
+        ttk.Button(self.master, text="Play", command=lambda: self.interact_with_pet('play')).pack()
+        ttk.Button(self.master, text="Clean", command=lambda: self.interact_with_pet('clean')).pack()
+        ttk.Button(self.master, text="Doctor", command=lambda: self.interact_with_pet('doctor')).pack()
+        self.update_status()
+
+    def interact_with_pet(self, action):
+        if action == 'feed':
+            self.pet.feed()
+        elif action == 'play':
+            self.pet.play()
+        elif action == 'clean':
+            self.pet.clean()
+        elif action == 'doctor':
+            self.pet.doctor()
+        self.update_status()
+
+    def update_status(self):
+        if not self.pet.is_alive():
+            messagebox.showinfo("Game Over", f"{self.pet.name} has passed away!")
+            self.master.quit()
+        else:
+            status = f"{self.pet.name} - Health: {self.pet.health}, Hunger: {self.pet.hunger}, Happiness: {self.pet.happiness}, Cleanliness: {self.pet.cleanliness}"
+            self.status_label.config(text=status)
+
+def main():
+    root = tk.Tk()
+    game = tkintergotchiGame(root)
+    root.mainloop()
+
+if __name__ == "__main__":
+    main()
+```
+
+## How it works:  Code: Version 1.0
+
+### Imports and Dependencies
+```python
+import tkinter as tk
+from tkinter import simpledialog, messagebox, ttk
+```
+This section imports the necessary components from `tkinter`, a standard GUI toolkit in Python. It specifically imports the `messagebox` and `ttk` modules which are used for creating dialog boxes and styled widgets, respectively.
+
+### Pet Class
+```python
+class Pet:
+    ...
+```
+The `Pet` class is a base class representing a generic pet with attributes for `name`, `hunger`, `happiness`, `cleanliness`, and `health`. It also includes methods to modify these attributes (`feed`, `play`, `clean`, `doctor`) and to simulate time passing (`time_pass`), which affects the pet's attributes. There's also a method `is_alive` to check the pet's health.
+
+### Subclasses of Pet
+```python
+class Monster(Pet):
+    ...
+class BlackCat(Pet):
+    ...
+class IceBat(Pet):
+    ...
+```
+These subclasses (`Monster`, `BlackCat`, `IceBat`) extend `Pet` with specific starting values for the pet’s attributes. Each type of pet starts with different levels of hunger, happiness, cleanliness, and health.
+
+### tkintergotchiGame Class
+```python
+class tkintergotchiGame:
+    ...
+```
+This class handles the main game mechanics. It initializes the GUI, lets the user select a pet type, and manages game interactions such as feeding and playing with the pet. Here are the key methods:
+- `init_pet_selection()`: Sets up the initial GUI for choosing a pet type and entering a pet name.
+- `start_game()`: Retrieves the selected pet type and name, instantiates the appropriate pet subclass, and transitions to the game interface.
+- `setup_game_interface()`: Creates the GUI for interacting with the pet (buttons for feeding, playing, etc.).
+- `interact_with_pet(action)`: Calls the appropriate pet method based on the button pressed (feed, play, clean, doctor).
+- `update_status()`: Updates the GUI with the pet's current status and checks if the pet is still alive.
+
+### Main Function
+```python
+def main():
+    ...
+```
+The `main()` function sets up the main window (`root`) and starts the game by creating an instance of `tkintergotchiGame`.
+
+### Program Entry Point
+```python
+if __name__ == "__main__":
+    main()
 ```
 
 
