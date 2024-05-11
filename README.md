@@ -13,6 +13,10 @@ SDEV-140
  \__|_|\_\_|_| |_|\__\___|_|  \__, |\___/ \__\___|_| |_|_|
                               |___/                       
 ```
+
+![](https://github.com/kschenk10-ivy-tech/kschenk10-ivy-tech-SDEV-140-M08-Final-Project-Submission-Spring-2024/blob/main/Screenshot%202024-05-11%20095705.png?raw=true)
+
+
 - [GitHub Repository: M08](https://github.com/kschenk10-ivy-tech/SDEV-140-M08-Final-Project-Submission-Spring-2024)
 
 - [Download the source code zip file](https://github.com/kschenk10-ivy-tech/SDEV-140-M08-Final-Project-Submission-Spring-2024/archive/refs/heads/main.zip)
@@ -150,8 +154,44 @@ if __name__ == "__main__":
 ```
 
 ## How it works:  Code: Version 1.0
+## User Manual and Documentation
 
-![](https://github.com/kschenk10-ivy-tech/kschenk10-ivy-tech-SDEV-140-M08-Final-Project-Submission-Spring-2024/blob/main/Screenshot%202024-05-11%20095705.png?raw=true)
+This Python script is designed to run a virtual pet game called "tkintergotchi," built using the `tkinter` library in Python.
+
+> [tkintergotchi.py](https://github.com/kschenk10-ivy-tech/kschenk10-ivy-tech-SDEV-140-M08-Final-Project-Submission-Spring-2024/blob/main/tkintergotchi.py)
+
+ Here's a breakdown of the script's components and functionality:
+
+### Imports and Dependencies
+- **`tkinter as tk`**: This is Python's standard GUI (Graphical User Interface) toolkit, used here to create and manage various GUI components.
+- **`from tkinter import simpledialog, messagebox, ttk`**: Imports additional specific modules from `tkinter`:
+  - `simpledialog` provides simple dialogues to interact with the user (not directly used in this script).
+  - `messagebox` is used to display message boxes for alerts and errors.
+  - `ttk` (Themed Tkinter) is used for access to Tk themed widget set, which allows for styling of the GUI components.
+
+### Classes and Methods
+- **`Pet` class**: This class models a generic virtual pet. It initializes a pet with attributes like name, hunger, happiness, cleanliness, and health, and includes methods to feed, play with, clean, and provide medical attention to the pet. The `time_pass` method simulates the passage of time affecting the pet's stats, and `is_alive` checks the pet's health to determine if it is still alive.
+
+- **`Monster`, `BlackCat`, `IceBat` classes**: These classes inherit from `Pet` and represent specific types of pets, each initialized with different default values for their attributes, making each pet type unique in its needs and care.
+
+- **`tkintergotchiGame` class**: This is the main class for the game, handling the GUI and game interactions. It initializes the main window and setups the pet selection interface. Based on user input, it creates an instance of the chosen pet type. The game interface includes buttons to interact with the pet and a status label to display the pet's current state. Methods within this class allow for the updating of the pet's status and handling user interactions like feeding and playing.
+
+### Game Flow
+1. **Initialization**: Upon starting the game, the user is prompted to enter a name for their pet and select the type of pet from options (Monster, BlackCat, IceBat).
+
+2. **Game Interface**: After selecting the pet, the main game interface is set up with buttons for different interactions (Feed, Play, Clean, Doctor) and a display for the pet's status (health, hunger, happiness, cleanliness).
+
+3. **Interactions**: Each button triggers a specific method in the `Pet` class that affects the pet's attributes. The status label updates to reflect these changes.
+
+4. **Game Over Condition**: The game checks if the pet is alive (based on the health attribute). If the pet dies, a game over message is shown, and the application closes.
+
+5. **Running the Game**: The game is encapsulated in a `main()` function that creates a root window and runs the game loop until the application is closed.
+
+This script showcases object-oriented programming principles and GUI development in Python, providing a simple yet interactive application.
+
+
+
+[![](https://mermaid.ink/img/pako:eNptlN9P2zAQx_-VU_awl-NlCKQVaRNJ2lLoT9ICxa2QSRxiNY2jxIFVDf_7YjuBZKMv9d3ne3f2-eKj5YuAWT3rJaNpBEv3YpNA9bskcscTybIXIf2ID-mebeHk5FfJEy5LsIn6f0qZfMpZzHzJRbI1kbaSgUP6KhrmTH7PYarC29glTiREzhSH5SHt0j7xJM0kqKpgF1J-JO_rPYgE_Jj7uxIGRydi_u4jzbuRDbRsIpK82kMJQ-JkjEoGtWfbVtkx9XcOrQ511cgaV0c38pmtVKNGZRxdTfJKYx6UcE28SLxBP8tEU22oj3ZDXJbLTBzAa_oGg-yzPVdGZYxR27jWhm2MG22MicdkkZo-jVS_Q-o3mcZaMlGtlEUOY_rM4g6akgFjQbe_hszIPKaHr8icODGjyVdoQVzhS5F12VSzW1Pqsj0nM008U6pD5pos61IdtNBo1ZTqsFvN7sgqDdT1mHPXzDPMGMu2sWobd_oWzUjxEC5j_spKuD-OcrP-Xc_XvdatWV7CQ7ceuDxPqxNt28KpKGFNamJua_b6MYZrvYNHsii4GfnKb4gf0zx3WQgBC2kRSwh5HPe-hT9DVDO0Y71vp6en9frkjQcy6v1I_1z8E60-1Tr0-fkzNDw__y-0cQQ0j2iW0UMPzhDO2hnBRgdd7OMAh3iFI7zGGxzjBKc4wzku8BY9XOIK7_AeH3CNj3oDFxZae5btKQ-q1-aoEm4sGbE921i9akkLKTbWJnmvdGrtHRLf6smsYGgVusMup9UjtW-cLODVCEzM66UfMbRSmjwKUUve_wKEfH9I?type=png)](https://mermaid.live/edit#pako:eNptlN9P2zAQx_-VU_awl-NlCKQVaRNJ2lLoT9ICxa2QSRxiNY2jxIFVDf_7YjuBZKMv9d3ne3f2-eKj5YuAWT3rJaNpBEv3YpNA9bskcscTybIXIf2ID-mebeHk5FfJEy5LsIn6f0qZfMpZzHzJRbI1kbaSgUP6KhrmTH7PYarC29glTiREzhSH5SHt0j7xJM0kqKpgF1J-JO_rPYgE_Jj7uxIGRydi_u4jzbuRDbRsIpK82kMJQ-JkjEoGtWfbVtkx9XcOrQ511cgaV0c38pmtVKNGZRxdTfJKYx6UcE28SLxBP8tEU22oj3ZDXJbLTBzAa_oGg-yzPVdGZYxR27jWhm2MG22MicdkkZo-jVS_Q-o3mcZaMlGtlEUOY_rM4g6akgFjQbe_hszIPKaHr8icODGjyVdoQVzhS5F12VSzW1Pqsj0nM008U6pD5pos61IdtNBo1ZTqsFvN7sgqDdT1mHPXzDPMGMu2sWobd_oWzUjxEC5j_spKuD-OcrP-Xc_XvdatWV7CQ7ceuDxPqxNt28KpKGFNamJua_b6MYZrvYNHsii4GfnKb4gf0zx3WQgBC2kRSwh5HPe-hT9DVDO0Y71vp6en9frkjQcy6v1I_1z8E60-1Tr0-fkzNDw__y-0cQQ0j2iW0UMPzhDO2hnBRgdd7OMAh3iFI7zGGxzjBKc4wzku8BY9XOIK7_AeH3CNj3oDFxZae5btKQ-q1-aoEm4sGbE921i9akkLKTbWJnmvdGrtHRLf6smsYGgVusMup9UjtW-cLODVCEzM66UfMbRSmjwKUUve_wKEfH9I)
 
 
 ### Imports and Dependencies
@@ -292,7 +332,7 @@ Test how the application handles unexpected user input or actions.
 
 ---
 
-
+<!--
 ![](https://assets.codepen.io/6566924/favicon-96x96.png)
 
 ## Let's Connect
