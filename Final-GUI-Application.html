@@ -1,0 +1,350 @@
+﻿﻿<!DOCTYPE html>
+<html>
+<!-- Final-GUI-Application.html -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Final GUI Application</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__left">
+    <div class="stackedit__toc">
+      
+<ul>
+<li><a href="#m08-final-project-submission">M08-Final-Project-Submission</a>
+<ul>
+<li><a href="#user-manual-documentation-and-validation-testing-links">User Manual, Documentation, and Validation Testing Links</a>
+<ul>
+<li></li>
+</ul>
+</li>
+<li><a href="#validation-testing-and-documentation">Validation Testing and Documentation</a></li>
+<li><a href="#functional-testing">1. Functional Testing</a></li>
+<li><a href="#interface-testing">2. Interface Testing</a></li>
+<li><a href="#project-overview-and-notestask-lists">Project Overview and Notes/Task lists</a></li>
+<li><a href="#notes-and-references">Notes and References</a></li>
+<li><a href="#lets-connect">Let’s Connect</a>
+<ul>
+<li></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+  <div class="stackedit__right">
+    <div class="stackedit__html">
+      <p>Khristin Schenk<br>
+May 10, 2024<br>
+SDEV-140</p>
+<h1 id="m08-final-project-submission">M08-Final-Project-Submission</h1>
+<ul>
+<li>
+<p><a href="https://github.com/kschenk10-ivy-tech/SDEV-140-M08-Final-Project-Submission-Spring-2024">GitHub Repository: M08</a></p>
+</li>
+<li>
+<p><a href="https://github.com/kschenk10-ivy-tech/SDEV-140-M08-Final-Project-Submission-Spring-2024/archive/refs/heads/main.zip">Download the source code zip file</a></p>
+</li>
+</ul>
+<h2 id="user-manual-documentation-and-validation-testing-links">User Manual, Documentation, and Validation Testing Links</h2>
+<!-- HIDDEN&#10;- [User manual](./) &#10;- [Documentation](./) &#10;- [Validation testing](./) &#10;- [GitHub repository](./)&#10;HIDDEN -->
+<h4 id="code-version-1.0-schenkkhristinfinalproject.py">Code: Version 1.0: <code>SchenkKhristinFinalProject.py</code></h4>
+<pre class=" language-python"><code class="prism  language-python"><span class="token comment"># Version 1.0</span>
+<span class="token comment"># Last updated on May 10th, 2024 by K.S. </span>
+<span class="token keyword">import</span> tkinter <span class="token keyword">as</span> tk
+<span class="token keyword">import</span> random
+
+<span class="token keyword">class</span> <span class="token class-name">Tamagotchi</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>hunger <span class="token operator">=</span> <span class="token number">5</span>
+        self<span class="token punctuation">.</span>happiness <span class="token operator">=</span> <span class="token number">5</span>
+        self<span class="token punctuation">.</span>health <span class="token operator">=</span> <span class="token number">5</span>
+        self<span class="token punctuation">.</span>discipline_level <span class="token operator">=</span> <span class="token number">5</span>
+        self<span class="token punctuation">.</span>is_sick <span class="token operator">=</span> <span class="token boolean">False</span>
+        self<span class="token punctuation">.</span>needs_toilet <span class="token operator">=</span> <span class="token boolean">False</span>
+        self<span class="token punctuation">.</span>age <span class="token operator">=</span> <span class="token number">0</span>
+        self<span class="token punctuation">.</span>stage <span class="token operator">=</span> <span class="token string">"Egg"</span>
+
+    <span class="token keyword">def</span> <span class="token function">grow</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>age <span class="token operator">+=</span> <span class="token number">1</span>
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>age <span class="token operator">==</span> <span class="token number">5</span><span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>stage <span class="token operator">=</span> <span class="token string">"Child"</span>
+        <span class="token keyword">elif</span> self<span class="token punctuation">.</span>age <span class="token operator">==</span> <span class="token number">10</span><span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>stage <span class="token operator">=</span> <span class="token string">"Adult"</span>
+
+    <span class="token keyword">def</span> <span class="token function">feed</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>hunger <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>hunger <span class="token operator">-=</span> <span class="token number">1</span>
+
+    <span class="token keyword">def</span> <span class="token function">play</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>happiness <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>happiness <span class="token operator">+=</span> <span class="token number">1</span>
+
+    <span class="token keyword">def</span> <span class="token function">give_medicine</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>is_sick<span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>is_sick <span class="token operator">=</span> <span class="token boolean">False</span>
+            self<span class="token punctuation">.</span>health <span class="token operator">+=</span> <span class="token number">1</span>
+
+    <span class="token keyword">def</span> <span class="token function">flush</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>needs_toilet<span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>needs_toilet <span class="token operator">=</span> <span class="token boolean">False</span>
+
+    <span class="token keyword">def</span> <span class="token function">check_health</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> f<span class="token string">"Health: {self.health}, Hunger: {self.hunger}, Happiness: {self.happiness}, Discipline: {self.discipline_level}"</span>
+
+    <span class="token keyword">def</span> <span class="token function">discipline</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>discipline_level <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>discipline_level <span class="token operator">+=</span> <span class="token number">1</span>
+
+    <span class="token keyword">def</span> <span class="token function">random_events</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>is_sick <span class="token operator">=</span> <span class="token boolean">True</span>
+        <span class="token keyword">if</span> random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>needs_toilet <span class="token operator">=</span> <span class="token boolean">True</span>
+
+<span class="token comment"># Initialize the Tamagotchi instance</span>
+tamagotchi <span class="token operator">=</span> Tamagotchi<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">update_gui</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    hunger_label<span class="token punctuation">.</span>config<span class="token punctuation">(</span>text<span class="token operator">=</span>f<span class="token string">"Hunger: {tamagotchi.hunger}"</span><span class="token punctuation">)</span>
+    happiness_label<span class="token punctuation">.</span>config<span class="token punctuation">(</span>text<span class="token operator">=</span>f<span class="token string">"Happiness: {tamagotchi.happiness}"</span><span class="token punctuation">)</span>
+    health_label<span class="token punctuation">.</span>config<span class="token punctuation">(</span>text<span class="token operator">=</span>f<span class="token string">"Health: {tamagotchi.health}"</span><span class="token punctuation">)</span>
+    discipline_label<span class="token punctuation">.</span>config<span class="token punctuation">(</span>text<span class="token operator">=</span>f<span class="token string">"Discipline: {tamagotchi.discipline_level}"</span><span class="token punctuation">)</span>
+    stage_label<span class="token punctuation">.</span>config<span class="token punctuation">(</span>text<span class="token operator">=</span>f<span class="token string">"Stage: {tamagotchi.stage}"</span><span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">feed_tamagotchi</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    tamagotchi<span class="token punctuation">.</span>feed<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    update_gui<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+root <span class="token operator">=</span> tk<span class="token punctuation">.</span>Tk<span class="token punctuation">(</span><span class="token punctuation">)</span>
+root<span class="token punctuation">.</span>title<span class="token punctuation">(</span><span class="token string">"Tamagotchi Simulator"</span><span class="token punctuation">)</span>
+
+stage_label <span class="token operator">=</span> tk<span class="token punctuation">.</span>Label<span class="token punctuation">(</span>root<span class="token punctuation">,</span> text<span class="token operator">=</span>f<span class="token string">"Stage: {tamagotchi.stage}"</span><span class="token punctuation">)</span>
+stage_label<span class="token punctuation">.</span>pack<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+hunger_label <span class="token operator">=</span> tk<span class="token punctuation">.</span>Label<span class="token punctuation">(</span>root<span class="token punctuation">,</span> text<span class="token operator">=</span>f<span class="token string">"Hunger: {tamagotchi.hunger}"</span><span class="token punctuation">)</span>
+hunger_label<span class="token punctuation">.</span>pack<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+happiness_label <span class="token operator">=</span> tk<span class="token punctuation">.</span>Label<span class="token punctuation">(</span>root<span class="token punctuation">,</span> text<span class="token operator">=</span>f<span class="token string">"Happiness: {tamagotchi.happiness}"</span><span class="token punctuation">)</span>
+happiness_label<span class="token punctuation">.</span>pack<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+health_label <span class="token operator">=</span> tk<span class="token punctuation">.</span>Label<span class="token punctuation">(</span>root<span class="token punctuation">,</span> text<span class="token operator">=</span>f<span class="token string">"Health: {tamagotchi.health}"</span><span class="token punctuation">)</span>
+health_label<span class="token punctuation">.</span>pack<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+discipline_label <span class="token operator">=</span> tk<span class="token punctuation">.</span>Label<span class="token punctuation">(</span>root<span class="token punctuation">,</span> text<span class="token operator">=</span>f<span class="token string">"Discipline: {tamagotchi.discipline_level}"</span><span class="token punctuation">)</span>
+discipline_label<span class="token punctuation">.</span>pack<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+feed_button <span class="token operator">=</span> tk<span class="token punctuation">.</span>Button<span class="token punctuation">(</span>root<span class="token punctuation">,</span> text<span class="token operator">=</span><span class="token string">"Feed"</span><span class="token punctuation">,</span> command<span class="token operator">=</span>feed_tamagotchi<span class="token punctuation">)</span>
+feed_button<span class="token punctuation">.</span>pack<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+root<span class="token punctuation">.</span>mainloop<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="validation-testing-and-documentation">Validation Testing and Documentation</h2>
+<p>Tests for button functionality, Tamagotchi growth stages, and error handling.</p>
+<h2 id="functional-testing">1. Functional Testing</h2>
+<p>This involves testing the functions of the Tamagotchi application to ensure they behave as expected.</p>
+<h3 id="test-cases">Test Cases:</h3>
+<p><strong>TC1: Tamagotchi Growth</strong></p>
+<ul>
+<li><strong>Objective:</strong> Ensure the Tamagotchi progresses through its life stages correctly.</li>
+<li><strong>Steps:</strong> Initialize the application, simulate the passage of time or actions to increase age, and observe the stage transitions from Egg to Child to Adult.</li>
+<li><strong>Expected Result:</strong> The Tamagotchi’s stage should update at the defined ages (5 for Child, 10 for Adult).</li>
+</ul>
+<p><strong>TC2: Feeding Mechanism</strong></p>
+<ul>
+<li><strong>Objective:</strong> Validate that feeding decreases hunger.</li>
+<li><strong>Steps:</strong> Note the initial hunger level, click the feed button, and check the hunger level again.</li>
+<li><strong>Expected Result:</strong> Hunger level should decrease by 1 with each feed action, not dropping below 0.</li>
+</ul>
+<p><strong>TC3: Health and Sickness</strong></p>
+<ul>
+<li><strong>Objective:</strong> Test that the health management and sickness features work.</li>
+<li><strong>Steps:</strong> Induce sickness by using the <code>random_events</code> method or a button if implemented. Administer medicine and check health improvement.</li>
+<li><strong>Expected Result:</strong> If sick, the health should improve by 1 and the sickness status should clear after administering medicine.</li>
+</ul>
+<p><strong>TC4: Happiness and Play</strong></p>
+<ul>
+<li><strong>Objective:</strong> Ensure that playing with the Tamagotchi increases happiness.</li>
+<li><strong>Steps:</strong> Check the initial happiness, use the play function or a corresponding button, and recheck the happiness level.</li>
+<li><strong>Expected Result:</strong> Happiness should increase by 1 with each play action, not exceeding 10.</li>
+</ul>
+<p><strong>TC5: Discipline</strong></p>
+<ul>
+<li><strong>Objective:</strong> Check if the discipline functionality works as expected.</li>
+<li><strong>Steps:</strong> Observe the initial discipline level, apply discipline, and check the level again.</li>
+<li><strong>Expected Result:</strong> Discipline level should increase by 1 with each action, not exceeding 10.</li>
+</ul>
+<p><strong>TC6: Toilet Needs</strong></p>
+<ul>
+<li><strong>Objective:</strong> Ensure that the toilet needs and flushing system functions.</li>
+<li><strong>Steps:</strong> Manually set <code>needs_toilet</code> to True, use the flush function, and check the status.</li>
+<li><strong>Expected Result:</strong> <code>needs_toilet</code> should become False after the flush.</li>
+</ul>
+<h2 id="interface-testing">2. Interface Testing</h2>
+<p>Test the GUI elements for functionality and to ensure they are displaying the correct information.</p>
+<h3 id="test-cases-1">Test Cases:</h3>
+<p><strong>TC7: GUI Updates</strong></p>
+<ul>
+<li><strong>Objective:</strong> Validate that all GUI labels update correctly when actions are taken.</li>
+<li><strong>Steps:</strong> Perform actions like feeding or playing and observe the changes in the GUI labels for hunger, happiness, and health.</li>
+<li><strong>Expected Result:</strong> All labels should reflect the current status of the Tamagotchi correctly after any action.</li>
+</ul>
+<p><strong>TC8: Button Functionality</strong></p>
+<ul>
+<li><strong>Objective:</strong> Ensure all buttons trigger their respective functions.</li>
+<li><strong>Steps:</strong> Click each button in the application and observe the expected action.</li>
+<li><strong>Expected Result:</strong> Each button should perform its defined function without errors.</li>
+</ul>
+<h3 id="error-handling">3. Error Handling</h3>
+<p>Test how the application handles unexpected user input or actions.</p>
+<h4 id="test-cases-2">Test Cases:</h4>
+<p><strong>TC9: Overfeeding</strong></p>
+<ul>
+<li><strong>Objective:</strong> Confirm the application handles overfeeding without crashing or errors.</li>
+<li><strong>Steps:</strong> Attempt to feed the Tamagotchi when hunger is at 0.</li>
+<li><strong>Expected Result:</strong> Application should not allow hunger to go below 0 and should handle the action gracefully, possibly with a message or no change in the hunger level.</li>
+</ul>
+<p><strong>TC10: Excessive Playing</strong></p>
+<ul>
+<li><strong>Objective:</strong> Check the handling of continuous play actions when happiness is maxed out.</li>
+<li><strong>Steps:</strong> Max out the happiness level and attempt to increase it further.</li>
+<li><strong>Expected Result:</strong> Happiness should not exceed 10, and the system should handle it appropriately.</li>
+</ul>
+<h3 id="documentation-and-reporting">Documentation and Reporting</h3>
+<ul>
+<li class="task-list-item">
+<p><input type="checkbox" class="task-list-item-checkbox" disabled=""> Ensure all tests are documented with their results and any issues found are reported for further fixing.</p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" class="task-list-item-checkbox" disabled=""> Use a simple template to track test case ID, description, steps, expected result, actual result, and status (Pass/Fail).</p>
+</li>
+</ul>
+<hr>
+<h4 id="code-version-2.0">Code: Version 2.0</h4>
+<pre class=" language-python"><code class="prism  language-python"><span class="token comment"># Version 2.0</span>
+<span class="token comment"># Last updated on May 10th, 2024 by K.S.</span>
+
+<span class="token keyword">import</span> tkinter <span class="token keyword">as</span> tk
+<span class="token keyword">from</span> PIL <span class="token keyword">import</span> Image<span class="token punctuation">,</span> ImageTk
+
+<span class="token keyword">class</span> <span class="token class-name">Tamagotchi</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>hunger <span class="token operator">=</span> <span class="token number">5</span>
+        self<span class="token punctuation">.</span>happiness <span class="token operator">=</span> <span class="token number">5</span>
+        self<span class="token punctuation">.</span>health <span class="token operator">=</span> <span class="token number">5</span>
+        self<span class="token punctuation">.</span>discipline_level <span class="token operator">=</span> <span class="token number">5</span>
+        self<span class="token punctuation">.</span>is_sick <span class="token operator">=</span> <span class="token boolean">False</span>
+        self<span class="token punctuation">.</span>needs_toilet <span class="token operator">=</span> <span class="token boolean">False</span>
+        self<span class="token punctuation">.</span>age <span class="token operator">=</span> <span class="token number">0</span>
+        self<span class="token punctuation">.</span>stage <span class="token operator">=</span> <span class="token string">"Egg"</span>
+        self<span class="token punctuation">.</span>images <span class="token operator">=</span> <span class="token punctuation">{</span>
+            <span class="token string">"Egg"</span><span class="token punctuation">:</span> ImageTk<span class="token punctuation">.</span>PhotoImage<span class="token punctuation">(</span>Image<span class="token punctuation">.</span><span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"/path/to/01-Egg.png"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token string">"Baby"</span><span class="token punctuation">:</span> ImageTk<span class="token punctuation">.</span>PhotoImage<span class="token punctuation">(</span>Image<span class="token punctuation">.</span><span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"/path/to/02-Baby.png"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token string">"Child"</span><span class="token punctuation">:</span> ImageTk<span class="token punctuation">.</span>PhotoImage<span class="token punctuation">(</span>Image<span class="token punctuation">.</span><span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"/path/to/03-Child.png"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token string">"Teenager"</span><span class="token punctuation">:</span> ImageTk<span class="token punctuation">.</span>PhotoImage<span class="token punctuation">(</span>Image<span class="token punctuation">.</span><span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"/path/to/04-Teenager.png"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token string">"Adult"</span><span class="token punctuation">:</span> ImageTk<span class="token punctuation">.</span>PhotoImage<span class="token punctuation">(</span>Image<span class="token punctuation">.</span><span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"/path/to/05-Adult.png"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+
+    <span class="token keyword">def</span> <span class="token function">grow</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>age <span class="token operator">+=</span> <span class="token number">1</span>
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>age <span class="token operator">==</span> <span class="token number">5</span><span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>stage <span class="token operator">=</span> <span class="token string">"Child"</span>
+        <span class="token keyword">elif</span> self<span class="token punctuation">.</span>age <span class="token operator">==</span> <span class="token number">10</span><span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>stage <span class="token operator">=</span> <span class="token string">"Adult"</span>
+        <span class="token keyword">elif</span> self<span class="token punctuation">.</span>age <span class="token operator">==</span> <span class="token number">15</span><span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>stage <span class="token operator">=</span> <span class="token string">"Teenager"</span>
+        <span class="token keyword">elif</span> self<span class="token punctuation">.</span>age <span class="token operator">==</span> <span class="token number">20</span><span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>stage <span class="token operator">=</span> <span class="token string">"Adult"</span>
+
+<span class="token keyword">def</span> <span class="token function">update_gui</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    hunger_label<span class="token punctuation">.</span>config<span class="token punctuation">(</span>text<span class="token operator">=</span>f<span class="token string">"Hunger: {tamagotchi.hunger}"</span><span class="token punctuation">)</span>
+    happiness_label<span class="token punctuation">.</span>config<span class="token punctuation">(</span>text<span class="token operator">=</span>f<span class="token string">"Happiness: {tamagotchi.happiness}"</span><span class="token punctuation">)</span>
+    health_label<span class="token punctuation">.</span>config<span class="token punctuation">(</span>text<span class="token operator">=</span>f<span class="token string">"Health: {tamagotchi.health}"</span><span class="token punctuation">)</span>
+    discipline_label<span class="token punctuation">.</span>config<span class="token punctuation">(</span>text<span class="token operator">=</span>f<span class="token string">"Discipline: {tamagotchi.discipline_level}"</span><span class="token punctuation">)</span>
+    stage_label<span class="token punctuation">.</span>config<span class="token punctuation">(</span>text<span class="token operator">=</span>f<span class="token string">"Stage: {tamagotchi.stage}"</span><span class="token punctuation">)</span>
+    image_label<span class="token punctuation">.</span>config<span class="token punctuation">(</span>image<span class="token operator">=</span>tamagotchi<span class="token punctuation">.</span>images<span class="token punctuation">[</span>tamagotchi<span class="token punctuation">.</span>stage<span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">feed_tamagotchi</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    tamagotchi<span class="token punctuation">.</span>feed<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    update_gui<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+root <span class="token operator">=</span> tk<span class="token punctuation">.</span>Tk<span class="token punctuation">(</span><span class="token punctuation">)</span>
+root<span class="token punctuation">.</span>title<span class="token punctuation">(</span><span class="token string">"Tamagotchi Simulator"</span><span class="token punctuation">)</span>
+
+image_label <span class="token operator">=</span> tk<span class="token punctuation">.</span>Label<span class="token punctuation">(</span>root<span class="token punctuation">)</span>
+image_label<span class="token punctuation">.</span>pack<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+stage_label <span class="token operator">=</span> tk<span class="token punctuation">.</span>Label<span class="token punctuation">(</span>root<span class="token punctuation">,</span> text<span class="token operator">=</span>f<span class="token string">"Stage: {tamagotchi.stage}"</span><span class="token punctuation">)</span>
+stage_label<span class="token punctuation">.</span>pack<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+hunger_label <span class="token operator">=</span> tk<span class="token punctuation">.</span>Label<span class="token punctuation">(</span>root<span class="token punctuation">,</span> text<span class="token operator">=</span>f<span class="token string">"Hunger: {tamagotchi.hunger}"</span><span class="token punctuation">)</span>
+hunger_label<span class="token punctuation">.</span>pack<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+happiness_label <span class="token operator">=</span> tk<span class="token punctuation">.</span>Label<span class="token punctuation">(</span>root<span class="token punctuation">,</span> text<span class="token operator">=</span>f<span class="token string">"Happiness: {tamagotchi.happiness}"</span><span class="token punctuation">)</span>
+happiness_label<span class="token punctuation">.</span>pack<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+health_label <span class="token operator">=</span> tk<span class="token punctuation">.</span>Label<span class="token punctuation">(</span>root<span class="token punctuation">,</span> text<span class="token operator">=</span>f<span class="token string">"Health: {tamagotchi.health}"</span><span class="token punctuation">)</span>
+health_label<span class="token punctuation">.</span>pack<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+discipline_label <span class="token operator">=</span> tk<span class="token punctuation">.</span>Label<span class="token punctuation">(</span>root<span class="token punctuation">,</span> text<span class="token operator">=</span>f<span class="token string">"Discipline: {tamagotchi.discipline_level}"</span><span class="token punctuation">)</span>
+discipline_label<span class="token punctuation">.</span>pack<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+feed_button <span class="token operator">=</span> tk<span class="token punctuation">.</span>Button<span class="token punctuation">(</span>root<span class="token punctuation">,</span> text<span class="token operator">=</span><span class="token string">"Feed"</span><span class="token punctuation">,</span> command<span class="token operator">=</span>feed_tamagotchi<span class="token punctuation">)</span>
+feed_button<span class="token punctuation">.</span>pack<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+tamagotchi <span class="token operator">=</span> Tamagotchi<span class="token punctuation">(</span><span class="token punctuation">)</span>
+update_gui<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+root<span class="token punctuation">.</span>mainloop<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<hr>
+<h2 id="project-overview-and-notestask-lists">Project Overview and Notes/Task lists</h2>
+<p><strong>Requirements for the Final GUI Application:</strong></p>
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" checked="true" disabled=""> At least two windows in the application.</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" checked="true" disabled=""> Modular design approach.</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" checked="true" disabled=""> Consistent and clear navigation.</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" checked="true" disabled=""> At least two images with alternate text.</li>
+</ul>
+<h2 id="notes-and-references">Notes and References</h2>
+<ul>
+<li><strong>PIL</strong> is the <a href="https://pillow.readthedocs.io/en/stable/">Python Imaging Library</a> <em>by Fredrik Lundh and contributors</em>.</li>
+</ul>
+<hr>
+<h3 id="to-do"><strong>TO DO</strong></h3>
+<ul>
+<li class="task-list-item">
+<p><input type="checkbox" class="task-list-item-checkbox" checked="true" disabled="">  Replace <code>"/path/to/xx-Stage.png"</code> with the actual path to the saved images.</p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" class="task-list-item-checkbox" disabled=""> Make sure the images are in a supported format</p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" class="task-list-item-checkbox" disabled=""> Update the stage growth logic as needed to ensure the correct image is shown at each life stage.</p>
+</li>
+<li class="task-list-item">
+<p><input type="checkbox" class="task-list-item-checkbox" disabled=""> Test dependencies</p>
+</li>
+</ul>
+<h3 id="update-to-include-life-cycle-and-apply-images">UPDATE TO INCLUDE LIFE CYCLE AND APPLY IMAGES:</h3>
+<p>The Egg Stage marks the beginning of a Tamagotchi’s life cycle. Every Tamagotchi starts at this stage, and the user needs to set the clock before the egg can hatch. It should take approximately 1 minute for the egg to hatch. After hatching, the Tamagotchi enters the baby stage, which usually lasts for 24 hours. The next stage is the child stage, which lasts for 48 hours. After that, the Tamagotchi enters its teenage stage, which can last for up to 72 hours. Finally, the Tamagotchi enters its adult stage, which lasts for approximately 58 hours.</p>
+<p><img src="https://assets.codepen.io/6566924/favicon-96x96.png" alt=""></p>
+<h2 id="lets-connect">Let’s Connect</h2>
+<h4 id="📫-how-to-reach-me">📫 How to reach me</h4>
+<p><a href="https://codepen.io/Khristin-Schenk">CodePen</a> | <a href="https://github.com/kschenk10-ivy-tech">GitHub</a></p>
+<p>Send electronic mail to:  <a href="mailto:khristinschenk@gmail.com"><em>khristinschenk@gmail.com</em></a></p>
+<p>Send Snail Mail to: <em>Khristin Schenk</em>📍U.S.A. North America, Planet Earth, Solar System, Oort Cloud, Local Interstellar Cloud, Local Cavity, Orion Arm, Milky Way, Local Group, Virgo Supercluster, Laniakea Supercluster, the Universe.</p>
+<hr>
+<blockquote>
+<p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
+</blockquote>
+
+    </div>
+  </div>
+</body>
+
+</html>
