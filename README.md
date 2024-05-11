@@ -17,6 +17,7 @@ SDEV-140
 
 - [Download the source code zip file](https://github.com/kschenk10-ivy-tech/SDEV-140-M08-Final-Project-Submission-Spring-2024/archive/refs/heads/main.zip)
 
+![](https://github.com/kschenk10-ivy-tech/kschenk10-ivy-tech-SDEV-140-M08-Final-Project-Submission-Spring-2024/blob/main/Screenshot%202024-05-11%20142303.png?raw=true)
 
 ```python
 # Version 1.0
@@ -149,6 +150,9 @@ if __name__ == "__main__":
 ```
 
 ## How it works:  Code: Version 1.0
+
+![](https://github.com/kschenk10-ivy-tech/kschenk10-ivy-tech-SDEV-140-M08-Final-Project-Submission-Spring-2024/blob/main/Screenshot%202024-05-11%20095705.png?raw=true)
+
 
 ### Imports and Dependencies
 ```python
@@ -284,3 +288,22 @@ Test how the application handles unexpected user input or actions.
 
 ### Documentation and Reporting
 - [Download the Microsoft Excel File](#)
+
+
+---
+
+
+![](https://assets.codepen.io/6566924/favicon-96x96.png)
+
+## Let's Connect
+[CodePen](https://codepen.io/Khristin-Schenk) | [GitHub](https://github.com/kschenk10-ivy-tech)
+
+Send electronic mail to:  [*khristinschenk@gmail.com*](mailto:khristinschenk@gmail.com)
+
+Send ***Snail Mail*** to: **Khristin Schenk**
+📍U.S.A. North America, Planet Earth, Solar System, Oort Cloud, Local Interstellar Cloud, Local Cavity, Orion Arm, Milky Way, Local Group, Virgo Supercluster, Laniakea Supercluster, the Universe.
+
+
+---
+
+> Written with [StackEdit](https://stackedit.io/).
